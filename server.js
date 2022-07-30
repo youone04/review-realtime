@@ -24,8 +24,10 @@ io.on('connection', socket => {
     socket.on('joinRoom', id => {
         const user = {userId: socket.id, room: id}
 
+        // jika tidak ada
         const check = users.every(user => user.userId !== socket.id)
 
+        // true maka di push
         if(check){
             users.push(user)
             socket.join(user.room)
